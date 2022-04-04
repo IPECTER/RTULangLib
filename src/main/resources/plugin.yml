@@ -1,0 +1,4 @@
+name: RTULangLib
+version: '${version}'
+main: com.github.ipecter.rtu.langlib.RTULangLib
+api-version: 1.13
