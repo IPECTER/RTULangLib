@@ -5,7 +5,7 @@
 
 - Void **init()**
 
-  **(!) This Method autocally run when this library enabling (!)**
+  **(!) This Method automatic run when this library enabling (!)**
 
 - String **getEntityName(Entity, Player)**
 - String **getEntityName(Entity, String locale)**
