@@ -1,11 +1,11 @@
-# RTULangAPI 1.0.0
-[ Minecraft Plugin ] 1.16 ~ 1.18 Language API, Get Localized Mob/Item Name!
+# RTULangLib 1.0.0
+[ Minecraft Plugin ] 1.16 ~ 1.18 Language Lib, Get Localized Mob/Item Name!
 
-**RTULangAPI.getManager()**
+**RTULangLib.getManager()**
 
 - Void **init()**
 
-  **(!) You must use this method in onEnable() Method (!)**
+  **(!) This Method autocally run when this library enabling (!)**
 
 - String **getEntityName(Entity, Player)**
 - String **getEntityName(Entity, String locale)**
