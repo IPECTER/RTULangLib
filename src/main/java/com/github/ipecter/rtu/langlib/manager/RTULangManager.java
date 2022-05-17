@@ -1,6 +1,7 @@
 package com.github.ipecter.rtu.langlib.manager;
 
 import com.github.ipecter.rtu.langlib.EnumLang;
+import com.github.ipecter.rtu.langlib.RTULangLib;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.bukkit.Material;
 import org.bukkit.entity.Entity;
@@ -27,6 +28,9 @@ public class RTULangManager {
 
     public String translateToLocal(String unlocalizedName, String locale) {
         String result = EnumLang.get(locale.toLowerCase()).getMap().get(unlocalizedName);
+        if (result == null){
+            result = RTULangLib.defaultEnumLang.getMap().get(unlocalizedName);
+        }
         return result != null ? StringEscapeUtils.unescapeJava(result) : "Unknown: " + unlocalizedName;
     }
     /************************** Item **************************/
