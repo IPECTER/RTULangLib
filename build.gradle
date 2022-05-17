@@ -6,6 +6,8 @@ plugins {
 group = 'com.github.ipecter.rtu'
 version = '1.0.0'
 
+ConfigurableFileTree libsImplementation = fileTree(dir: 'libs-implementation', include: ['*.jar'])
+
 repositories {
     mavenCentral()
     mavenLocal()
@@ -25,6 +27,7 @@ repositories {
 dependencies {
     compileOnly 'io.papermc.paper:paper-api:1.18.2-R0.1-SNAPSHOT'
     compileOnly "net.kyori:adventure-platform-bukkit:4.1.0"
+    implementation libsImplementation
 }
 
 def targetJavaVersion = 17

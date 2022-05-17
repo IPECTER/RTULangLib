@@ -1,4 +1,4 @@
-package com.github.ipecter.rtu.langLib;
+package com.github.ipecter.rtu.langlib;
 
 import java.util.EnumSet;
 import java.util.HashMap;
@@ -155,7 +155,7 @@ public enum EnumLang {
 
     public static EnumLang get(String locale) {
         EnumLang result = lookup.get(locale);
-        return result == null ? EN_US : result;
+        return result == null ? RTULangLib.defaultEnumLang : result;
     }
 
 }

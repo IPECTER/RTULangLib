@@ -1,4 +1,6 @@
 name: RTULangLib
 version: '${version}'
 main: com.github.ipecter.rtu.langlib.RTULangLib
-api-version: 1.13
+api-version: 1.16
+authors: [ IPECTER ]
+description: RTU PLUGINS - Language Mojang-Translation Library
