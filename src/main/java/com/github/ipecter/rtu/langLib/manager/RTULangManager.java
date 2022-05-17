@@ -1,7 +1,6 @@
 package com.github.ipecter.rtu.langLib.manager;
 
-import com.github.ipecter.rtu.langLib.enums.EnumEntity;
-import com.github.ipecter.rtu.langLib.enums.EnumLang;
+import com.github.ipecter.rtu.langLib.EnumLang;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -45,34 +44,71 @@ public class RTULangManager {
         }
     }
 
-    public String translateToLocal(String unlocalizedName, String locale) {
+    public static String translateToLocal(String unlocalizedName, String locale) {
         String result = EnumLang.get(locale.toLowerCase()).getMap().get(unlocalizedName);
         return result != null ? StringEscapeUtils.unescapeJava(result) : "Unknown: " + unlocalizedName;
     }
 
-    public String getEntityName(Entity entity, Player player) {
-        return getEntityName(entity.getType(), player.getLocale());
-    }
 
-    public String getEntityName(Entity entity, String locale) {
-        return getEntityName(entity.getType(), locale);
-    }
+    /************************** Entity(Type)Name **************************/
 
+    /***
+     * Entity Translation Method
+     * @param entityType
+     * @param locale
+     * @return EntityType's localized Name
+     */
+    public String getEntityName(EntityType entityType, String locale) {
+        return translateToLocal(getEntityName().translationKey(), locale);
+    }
+    /***
+     * Entity Translation Method
+     * @param entityType
+     * @param player
+     * @return EntityType's localized Name
+     */
     public String getEntityName(EntityType entityType, Player player) {
         return getEntityName(entityType, player.getLocale());
     }
-
-    public String getEntityName(EntityType entityType, String locale) {
-        return translateToLocal(EnumEntity.get(entityType).getUnlocalizedName(), locale);
+    /***
+     * Entity Translation Method
+     * @param entity
+     * @param locale
+     * @return Entity(Type)'s localized Name
+     */
+    public String getEntityName(Entity entity, String locale) {
+        return getEntityName(entity.getType(), locale);
+    }
+    /***
+     * Entity Translation Method
+     * @param entity
+     * @param player
+     * @return Entity(Type)'s localized Name
+     */
+    public String getEntityName(Entity entity, Player player) {
+        return getEntityName(entity, player.getLocale());
     }
 
-    public String getEntityDisplayName(Entity entity, Player player) {
-        return getEntityDisplayName(entity, player.getLocale());
-    }
+    /************************** EntityDisplayName **************************/
 
+    /***
+     * Entity Translation Method
+     * @param entity
+     * @param locale
+     * @return Entity's localized Name *if Entity has Custom Name, return custom name
+     */
     public String getEntityDisplayName(Entity entity, String locale) {
         return entity.getCustomName() != null ? entity.getCustomName() :
-                getEntityName(entity.getType(), locale);
+                translateToLocal(entity.getType().translationKey(), locale);
+    }
+    /***
+     * Entity Translation Method
+     * @param entity
+     * @param player
+     * @return Entity's localized Name *if Entity has Custom Name, return custom name
+     */
+    public String getEntityDisplayName(Entity entity, Player player) {
+        return getEntityDisplayName(entity, player.getLocale());
     }
 
 

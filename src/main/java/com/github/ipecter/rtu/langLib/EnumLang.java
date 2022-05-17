@@ -1,4 +1,4 @@
-package com.github.ipecter.rtu.langLib.enums;
+package com.github.ipecter.rtu.langLib;
 
 import java.util.EnumSet;
 import java.util.HashMap;
