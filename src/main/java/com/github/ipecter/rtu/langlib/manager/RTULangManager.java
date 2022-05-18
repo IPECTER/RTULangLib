@@ -25,15 +25,27 @@ public class RTULangManager {
     public String registerEntry(EnumLang lang, String unlocalizedName, String localizedName) {
         return lang.getMap().put(unlocalizedName, localizedName);
     }
-
     public String translateToLocal(String unlocalizedName, String locale) {
-        String result = EnumLang.get(locale.toLowerCase()).getMap().get(unlocalizedName);
+        return translateToLocal(unlocalizedName, EnumLang.get(locale));
+    }
+    public String translateToLocal(String unlocalizedName, EnumLang enumLang) {
+        String result = enumLang.getMap().get(unlocalizedName);
         if (result == null){
             result = RTULangLib.defaultEnumLang.getMap().get(unlocalizedName);
         }
         return result != null ? StringEscapeUtils.unescapeJava(result) : "Unknown: " + unlocalizedName;
     }
     /************************** Item **************************/
+
+    /***
+     * Item Translation Method
+     * @param itemStack
+     * @param locale
+     * @return ItemStack's localized Name
+     */
+    public String getItemName(ItemStack itemStack, EnumLang locale) {
+        return translateToLocal(itemStack.translationKey(), locale);
+    }
 
     /***
      * Item Translation Method
@@ -54,6 +66,15 @@ public class RTULangManager {
     public String getItemName(ItemStack itemStack, Player player) {
         return getItemName(itemStack, player.getLocale());
     }
+    /***
+     * Item Translation Method
+     * @param material
+     * @param locale
+     * @return Material's localized Name
+     */
+    public String getItemName(Material material, EnumLang locale) {
+        return translateToLocal(material.translationKey(), locale);
+    }
 
     /***
      * Item Translation Method
@@ -73,6 +94,17 @@ public class RTULangManager {
      */
     public String getItemName(Material material, Player player) {
         return getItemName(material, player.getLocale());
+    }
+
+    /***
+     * Entity Translation Method
+     * @param itemStack
+     * @param locale
+     * @return ItemStack's localized Name *if ItemStack has Display Name, return display name
+     */
+    public String getItemDisplayName(ItemStack itemStack, EnumLang locale) {
+        return itemStack.getItemMeta().hasDisplayName() ? itemStack.getItemMeta().getDisplayName() :
+                translateToLocal(itemStack.translationKey(), locale);
     }
 
     /***
@@ -105,6 +137,16 @@ public class RTULangManager {
      * @param locale
      * @return EntityType's localized Name
      */
+    public String getEntityName(EntityType entityType, EnumLang locale) {
+        return translateToLocal(entityType.translationKey(), locale);
+    }
+
+    /***
+     * Entity Translation Method
+     * @param entityType
+     * @param locale
+     * @return EntityType's localized Name
+     */
     public String getEntityName(EntityType entityType, String locale) {
         return translateToLocal(entityType.translationKey(), locale);
     }
@@ -125,6 +167,16 @@ public class RTULangManager {
      * @param locale
      * @return Entity(Type)'s localized Name
      */
+    public String getEntityName(Entity entity, EnumLang locale) {
+        return getEntityName(entity.getType(), locale);
+    }
+
+    /***
+     * Entity Translation Method
+     * @param entity
+     * @param locale
+     * @return Entity(Type)'s localized Name
+     */
     public String getEntityName(Entity entity, String locale) {
         return getEntityName(entity.getType(), locale);
     }
@@ -137,6 +189,17 @@ public class RTULangManager {
      */
     public String getEntityName(Entity entity, Player player) {
         return getEntityName(entity, player.getLocale());
+    }
+
+    /***
+     * Entity Translation Method
+     * @param entity
+     * @param locale
+     * @return Entity's localized Name *if Entity has Custom Name, return custom name
+     */
+    public String getEntityDisplayName(Entity entity, EnumLang locale) {
+        return entity.getCustomName() != null ? entity.getCustomName() :
+                translateToLocal(entity.getType().translationKey(), locale);
     }
 
     /***
