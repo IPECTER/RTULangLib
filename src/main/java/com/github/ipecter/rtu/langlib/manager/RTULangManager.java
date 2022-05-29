@@ -25,12 +25,14 @@ public class RTULangManager {
     public String registerEntry(EnumLang lang, String unlocalizedName, String localizedName) {
         return lang.getMap().put(unlocalizedName, localizedName);
     }
+
     public String translateToLocal(String unlocalizedName, String locale) {
         return translateToLocal(unlocalizedName, EnumLang.get(locale));
     }
+
     public String translateToLocal(String unlocalizedName, EnumLang enumLang) {
         String result = enumLang.getMap().get(unlocalizedName);
-        if (result == null){
+        if (result == null) {
             result = RTULangLib.defaultEnumLang.getMap().get(unlocalizedName);
         }
         return result != null ? StringEscapeUtils.unescapeJava(result) : "Unknown: " + unlocalizedName;
@@ -66,6 +68,7 @@ public class RTULangManager {
     public String getItemName(ItemStack itemStack, Player player) {
         return getItemName(itemStack, player.getLocale());
     }
+
     /***
      * Item Translation Method
      * @param material
