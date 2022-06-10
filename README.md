@@ -1,5 +1,5 @@
-# RTULangLib 1.1.0
-[ Minecraft Plugin ] 1.16 ~ 1.18 Language Mojang-Translation Library, Get Localized Mob/Item Name!
+# [ RTULangLib 1.1.0]
+[ Minecraft Plugin ] 1.16 ~ 1.19 Language Mojang-Translation Library, Get Localized Mob/Item Name!
 
 **RTULangManager.getManager()**
 
