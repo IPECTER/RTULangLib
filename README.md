@@ -38,5 +38,8 @@
 ## Gradle&Maven
 maven repo soon maybe...!
 
+## Development Status
+https://github.com/IPECTER/RTULangLib/projects/1
+
 ## Fork & Base
 https://github.com/MascusJeoraly/LanguageUtils
