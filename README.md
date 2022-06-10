@@ -35,11 +35,8 @@
   return Item's localized Name
   *if Item has Display Name, return display name
 
-# Gradle&Maven
+## Gradle&Maven
 maven repo soon maybe...!
 
-
-
-
-Fork & Base
+## Fork & Base
 https://github.com/MascusJeoraly/LanguageUtils
