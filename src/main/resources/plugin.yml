@@ -4,5 +4,5 @@ main: com.github.ipecter.rtu.langlib.RTULangLib
 api-version: 1.16
 authors: [ IPECTER ]
 libraries:
-  - 'org.apache.commons:commons-lang3:3.12.0'
+  - org.apache.commons:commons-lang3:3.12.0
 description: RTU PLUGINS - Language Mojang-Translation Library
