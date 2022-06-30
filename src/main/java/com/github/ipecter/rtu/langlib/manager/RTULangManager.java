@@ -2,7 +2,7 @@ package com.github.ipecter.rtu.langlib.manager;
 
 import com.github.ipecter.rtu.langlib.EnumLang;
 import com.github.ipecter.rtu.langlib.RTULangLib;
-import org.apache.commons.lang.StringEscapeUtils;
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.bukkit.Material;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
