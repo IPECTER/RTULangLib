@@ -20,7 +20,7 @@ public class RTULangLib extends JavaPlugin {
 
     public static EnumLang defaultEnumLang = EnumLang.EN_US;
 
-    private String prefix = IridiumColorAPI.process("<GRADIENT:fcba03>[ RTULangLib ]</GRADIENT:a3a3a3>");
+    private String prefix = IridiumColorAPI.process("<GRADIENT:cc811f>[ RTULangLib ]</GRADIENT:a3a3a3>");
 
     @Override
     public void onEnable() {
