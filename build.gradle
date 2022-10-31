@@ -1,6 +1,5 @@
 plugins {
     id 'java'
-    id 'com.github.johnrengelman.shadow' version '7.1.2'
 }
 
 group = 'com.github.ipecter.rtu'
@@ -24,12 +23,24 @@ repositories {
 
 }
 
+configurations {
+    extraLibs
+}
+
+jar {
+    from {
+        configurations.extraLibs.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
 dependencies {
     compileOnly "io.papermc.paper:paper-api:1.19.2-R0.1-SNAPSHOT"
     compileOnly "net.kyori:adventure-platform-bukkit:4.1.2"
     compileOnly "org.apache.commons:commons-lang3:3.12.0"
+    extraLibs libsImplementation
     implementation libsImplementation
 }
+
 
 def targetJavaVersion = 17
 java {
