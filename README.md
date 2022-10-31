@@ -35,8 +35,36 @@
   return Item's localized Name
   *if Item has Display Name, return display name
 
-## Gradle&Maven
-maven repo soon maybe...!
+## JitPack
+
+Gradle
+
+```
+repositories {
+  maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+  implementation 'com.github.IPECTER.RTULangLib:1.3.1'
+}
+```
+
+Maven
+
+```access transformers
+<repositories>
+    <repository>
+        <id>jitpack.io</id>
+        <url>https://jitpack.io</url>
+    </repository>
+</repositories>
+
+<dependency>
+    <groupId>com.github.IPECTER</groupId>
+    <artifactId>RTULangLib</artifactId>
+    <version>1.3.1</version>
+</dependency>
+```
 
 ## Development Status
 https://github.com/IPECTER/RTULangLib/projects/1
