@@ -2,16 +2,14 @@ package com.github.ipecter.rtu.langlib;
 
 
 import com.github.ipecter.rtu.langlib.manager.RTULangManager;
+import com.google.common.io.ByteStreams;
 import com.iridium.iridiumcolorapi.IridiumColorAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.List;
@@ -34,7 +32,7 @@ public class RTULangLib extends JavaPlugin {
     }
 
     public void init() {
-        File setting = getResource(RTULangLib.getPlugin(RTULangLib.class).getDataFolder(), "setting.yml");
+        File setting = copyResource("setting.yml");
         YamlConfiguration config = YamlConfiguration.loadConfiguration(setting);
 
         String defaultLang = config.getString("defaultLang");
@@ -89,26 +87,36 @@ public class RTULangLib extends JavaPlugin {
         }
     }
 
-    private File getResource(File folder, String file) {
-        if (!folder.exists()) {
+    private File getResourceFolder(File folder) {
+        File resourceFolder = folder;
+        if (!resourceFolder.exists()) {
             try {
-                folder.mkdir();
+                resourceFolder.mkdir();
 
             } catch (Exception e) {
                 Bukkit.getLogger().severe("Error creating folder " + folder);
                 e.printStackTrace();
             }
         }
-        File resourceFile = new File(folder, file);
-        if (!resourceFile.exists()) {
-            try {
-                resourceFile.createNewFile();
+        return resourceFolder;
+    }
 
+    private File copyResource(String sourceFile) {
+        File targetFoler = getResourceFolder(RTULangLib.getPlugin(RTULangLib.class).getDataFolder());
+        File resultFile = new File(targetFoler, sourceFile);
+        if (!resultFile.exists()) {
+            try {
+                resultFile.createNewFile();
+                InputStream in = RTULangLib.getPlugin(RTULangLib.class).getResource(sourceFile);
+                OutputStream out = new FileOutputStream(resultFile);
+                ByteStreams.copy(in, out);
+                out.close();
+                in.close();
             } catch (Exception e) {
-                Bukkit.getLogger().severe("Error creating file " + file);
+                Bukkit.getLogger().severe("Error copying content " + sourceFile);
                 e.printStackTrace();
             }
         }
-        return resourceFile;
+        return resultFile;
     }
 }
